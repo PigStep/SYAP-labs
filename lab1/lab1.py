@@ -13,20 +13,25 @@ def func2():
     for i in s:
         if i.isdigit():
             lst.append(i)
-    print(lst)
+    print(lst if len(lst) > 0 else "Строка не содержит чисел")
 
 def func3():
-    lst = list(map(int, input("Целые числа задния 3: ").split()))
+    lst = list(map(int, input("Целые числа задания 3: ").split()))
     C = int(input("Ваше число C: "))
 
     num_counter = 0
     for i in lst:
-        if i > C:
+        if i and i > C:
             num_counter +=1
 
-    index_max = lst.index(max(lst))
+    abs_lst = list(map(abs,(lst)))
+    index_max = abs_lst.index(max(abs_lst))
     if index_max != len(lst) - 1:
-        print(f"Числа больших {C} встречается в списке {num_counter} раз, а посе максимального числа в списке — {lst[index_max+1]}")
+        print(f"Числа больших {C} встречается в списке {num_counter} раз")
+        multiplied_lst = 1
+        for i in range(index_max, len(lst)):
+            multiplied_lst *= lst[i]
+        print(f"Произведение чисел, после {abs_lst[index_max]} в списке: {multiplied_lst}")
     else:
         print(f"Индекс максимального числа последний, Числа, большие {C} встречается в списке {num_counter} раз")
     
@@ -34,7 +39,7 @@ def func3():
     for i in pos:
         lst.remove(i)
 
-    print(lst)
+    print(f"Список без положительных чисел: {lst}")
 
 def func4(s = 'I Love Python'):
     
