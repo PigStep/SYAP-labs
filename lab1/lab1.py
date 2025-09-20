@@ -111,8 +111,15 @@ def func5():
             
     menu()
 
+def func6():
+    a = set(input('Введите множество A: ').split())
+    b = set(input('Введите множество B: ').split())
+
+    print(f'Множества А, которых нет в В: {a - b}')
+
 func1()
-# func2()
-# func3()
+func2()
+func3()
 func4()
 func5()
+func6()
