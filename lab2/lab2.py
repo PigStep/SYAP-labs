@@ -20,25 +20,28 @@
 def func1():
     try:
         num = int(input("ЗАДАНИЕ 1=======\n Введите число: "))
+
+        if num <= 0:
+            print("Введенное число не является натуральным")
+
+        hasOneFlag = False
+        sum = 0
+        for letter in str(num):
+            if int(letter) % 2 ==0:
+                hasOneFlag = True
+                sum+= int(letter)
+        
+        if hasOneFlag:
+            print("Сумма четных цифр введенного числа:", sum)
+        else:
+            print("Введенное число не содержит четных цифр")
+    
     except ValueError as e:
         print("Введены не числовые данные:", e)
+    except Exception as e:
+        print("Ошибка выполнения задания 1: ", e)
     finally:
         print("Выполнение задания 1 завершено")
-
-    if num <= 0:
-        print("Введенное число не является натуральным")
-
-    hasOneFlag = False
-    sum = 0
-    for letter in str(num):
-        if int(letter) % 2 ==0:
-            hasOneFlag = True
-            sum+= int(letter)
-    
-    if hasOneFlag:
-        print("Сумма четных цифр введенного числа:", sum)
-    else:
-        print("Введенное число не содержит четных цифр")
 
 
 def _func2(x: int | list):
@@ -97,7 +100,7 @@ def _func3(x: int | set | str):
             punct = set('.,!?')
             vowels_count = 0
 
-            for i in x:
+            for i in x.lower():
                 if i in vowels:
                     vowels_count += 1
             
@@ -113,7 +116,7 @@ def _func3(x: int | set | str):
     except Exception as e:
         print("Ошибка выполнения задания 3: ", e)
     finally:
-        print("Выполнение задания 3 завершено")
+        print("Выполнение части задания 3 завершено")
 
 
 def func3():
